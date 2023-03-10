@@ -7,7 +7,7 @@ const schemaContact = Joi.object({
     favorite: Joi.boolean(),
   });
 
-  const updateFavoriteSchema = Joi.object({
+const updateFavoriteSchema = Joi.object({
     favorite: Joi.boolean().required(),
   })
 
