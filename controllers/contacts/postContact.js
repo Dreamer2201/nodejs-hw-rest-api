@@ -1,5 +1,5 @@
 const { schemaContact } = require('../../shemas/shemaContacts')
-const contacts = require('../../models/contacts')
+const Contact = require('../../models/contact')
 const {HttpError} = require('../../helpers/index')
 
 const postContact = async (req, res, next) => {
@@ -8,7 +8,7 @@ const postContact = async (req, res, next) => {
       if (error) {
         throw HttpError(400, "Missing required name field")
       }
-      const data = await contacts.addContact(req.body)
+      const data = await Contact.create(req.body)
       res.status(201).json(data)
     }
     catch(error) {
