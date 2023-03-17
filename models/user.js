@@ -16,7 +16,7 @@ const userSchema = new Schema({
           default: "starter"
         },
         token: String
-}, {versionKey: false, timestamps: true})
+})
 
 userSchema.post("save", (err, data, next) => {
   const {name, code} = err

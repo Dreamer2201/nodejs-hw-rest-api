@@ -1,7 +1,7 @@
 const express = require('express')
 const authenticate = require('../../middlewares/authenticate')
 const { isValid } = require('../../middlewares/index')
-const ctrl = require('../../controllers/index')
+const ctrl = require('../../controllers/contacts/index')
 
 const router = express.Router()
 

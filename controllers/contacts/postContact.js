@@ -3,9 +3,8 @@ const Contact = require('../../models/contact')
 const {HttpError} = require('../../helpers/index')
 
 const postContact = async (req, res, next) => {
-    console.log(req.user)
     const {_id: owner} = req.user
-    console.log(owner)
+
     try {
       const {error} = schemaContact.validate(req.body)
       if (error) {
