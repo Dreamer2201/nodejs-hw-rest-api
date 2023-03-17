@@ -14,7 +14,7 @@ const registerUser = async (req, res, next) => {
         const {email, password} = req.body
         const user = await User.findOne({email})
         if (user) {
-            throw HttpError(409, "user is already in use")
+            throw HttpError(409, "Email in use")
         }
         const hashPassword = await bcrypt.hash(password, saltRounds)
 
@@ -24,7 +24,10 @@ const registerUser = async (req, res, next) => {
         })
 
         res.status(201).json({
-            email: newUser.email
+                user: {
+                  email: newUser.email,
+                  subscription: newUser.subscription,
+                }
         })
     }
     catch(error) {
