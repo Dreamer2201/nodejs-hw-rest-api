@@ -14,8 +14,6 @@ const updateAvatar = async (req, res) => {
 
     await fs.rename(temUpload, resultUpload)
 
-    console.log(resultUpload)
-
     await Jimp.read(resultUpload).then(img => {
         img.resize(250, 250).write(resultUpload)
     })
