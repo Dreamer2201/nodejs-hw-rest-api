@@ -21,15 +21,12 @@ const registerUser = async (req, res, next) => {
         const hashPassword = await bcrypt.hash(password, saltRounds)
 
         const avatar = gravatar.url(email);
-        console.log(avatar)
 
         const newUser = await User.create({
             ...req.body,
             password: hashPassword,
             avatarUrl: avatar,
         })
-
-        console.log(newUser)
 
         res.status(201).json({
                 user: {
