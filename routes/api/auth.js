@@ -5,6 +5,8 @@ const { authenticate, upload } = require('../../middlewares/index')
 const router = express.Router()
 
 router.post('/register', ctrl.postUser)
+router.get('/verify/:verificationToken', ctrl.verifyEmail)
+router.post('/verify', ctrl.resendVerify)
 router.post('/login', ctrl.loginUser)
 router.post('/current', authenticate, ctrl.postCurrent)
 router.post('/logout', authenticate, ctrl.logoutUser)
