@@ -8,16 +8,13 @@ const resendVerify = async (req, res, next) => {
         const {email} = req.body
         const user = await User.findOne({email})
 
-        console.log(email)
-        console.log(req.body.error)
-
         const {error} = verifyEmailSchema.validate(req.body)
         if(error) {
             throw HttpError(400, "missing required field email")
         }
 
         if(!user) {
-            throw HttpError(404, `Not found user with ${email}`)
+            throw HttpError(404, `Not found user with email ${email}`)
         }
         if(user.verify) {
             throw HttpError(400, "Verification has already been passed")
